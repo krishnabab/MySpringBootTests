@@ -4,9 +4,12 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/service")
@@ -17,10 +20,12 @@ public class ServiceController {
 	private final AtomicLong counter = new AtomicLong();
 	
 	// http://localhost:9090/service/hello
-	@RequestMapping("/hello")
+	@RequestMapping(value="/hello",method= {RequestMethod.GET,RequestMethod.POST})
+	@ApiOperation(value = "This is method is to say HI to all")
 	public String sayHi() {
 		return "Hello Buddy !";
 	}
+	
 
 	// http://localhost:9090/service/hello/Prahaas
 		@RequestMapping("/hello/{name}")
@@ -45,7 +50,7 @@ public class ServiceController {
 	/* 
 	 * RequestMapping default method: 
 		http://localhost:9090/service
-	*/
+	
 	
 	@RequestMapping()
 	public String defaultMethod(){
@@ -58,10 +63,11 @@ public class ServiceController {
 	 * handler methods. It is useful in sending custom 404 response pages to users when there are 
 	 * no handler methods for the request.
 	 * http://localhost:9090/service/dd
-	 */
+	
 	
 	@RequestMapping("*")
 	public String fallbackMethod(){
 		return "fallback method";
 	}
+	*/
 }
