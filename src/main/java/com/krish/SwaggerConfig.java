@@ -21,3 +21,6 @@ public class SwaggerConfig {
           .build();                                           
     }
 }
+/* To invoke swagger ui 
+http://localhost:9090/swagger-ui.html
+*/
