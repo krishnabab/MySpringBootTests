@@ -1,0 +1,63 @@
+{
+	"receivedTimestamp": 1585172920774,
+	"finishedCreatedTimestamp": 1585172920774,
+	"warp": {
+		"uuid": "uuid",
+		"partition": "partition"
+	},
+	"traceId": "traceId",
+	"message": {
+		"name": "qube1",
+	    "timestamp": 1585172920774
+	},
+	"application": {
+		"name": "qubeTest",
+		"clusterId": "clusterId",
+		"instanceId": "instanceId",
+		"instanceLocation": "instanceLocation",
+		"instanceCpuUsage": 10.0,
+		"instanceMemoryUsage": 10.0
+	},
+	"source": {
+		"applicationName": "OneApp",
+		"applicationType": "iOS",
+		"visitId": "visitId",
+		"userId": "userId",
+		"accountNumber": "accountNumber",
+		"encAccountNumber": "encAccountNumber"
+	},
+	"api": {
+		"path": "/a/b/c",
+		"name": "testName",
+		"category": "testCategory",
+		"request": {
+			"httpVerb": "POST",
+			"queryParameters": "?foo=foo",
+			"encQueryParameters": "?foo=foo",
+			"size": 10,
+			"headers": {
+				"foo": "bar"
+			},
+			"body": "body",
+			"encBody": "encBody"
+		},
+		"response": {
+			"responseCode": 200,
+			"serviceResult": "ok",
+			"responseTimeMs": 1000,
+			"cached": true,
+			"headers": {
+				"foo": "bar"
+			},
+			"size": 100,
+			"body": "body",
+			"encBody": "encBody"
+		}
+	},
+	"error": {
+		"category": "category",
+		"code": "code",
+		"details": "details",
+		"name": "name"
+	}
+}
