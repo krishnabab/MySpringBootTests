@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = " com.krish.*")
-@ComponentScan({"com.krish","com.krish.rest.service"})
+//@ComponentScan({"com.krish","com.krish.rest.service"})
 @EnableFeignClients
 public class MySpringBootTestsApplication {
 

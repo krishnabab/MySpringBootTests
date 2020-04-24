@@ -12,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 public class QuantumClientController {
 	
 	@Autowired
-	QuantumClientService quantumClient;
+	QuantumClient quantumClient;
 	
 	@Autowired
 	QuantumData quantumData;
 	
 	public void postAddEquipmentMetrics() {
 		log.info("in Controller"+quantumData.toString());
-		quantumClient.postAddEquipementMetricsToQuantum(quantumData);
+		//quantumClient.postAddEquipementMetricsToQuantum(quantumData);
 		
 	}
 	

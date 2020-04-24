@@ -7,12 +7,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.krish.quantum.monitoring.QuantumData;
+
 @Configuration
 @ConditionalOnProperty(
 	    value="quantum.metrics.enabled", 
 	    havingValue = "true", 
 	    matchIfMissing = true)
 public class MetricsHandlerConfig extends WebMvcConfigurerAdapter {
+		
 	   @Autowired
 	   MetricsHandler metricsHandler;
 

@@ -59,7 +59,7 @@ public class ServiceController {
 	EquipmentDTO addEquipmentToTechBuffer(@PathVariable(required = true) Long fulfillmentCenterId, @PathVariable(required = true) String techId,
 			@RequestBody @Validated EquipmentDTO equipmentDTO) {
 		log.info("in the add equipment");
-		return equipmentDTO;
+		return null;
 	}
 	
 	/* 
