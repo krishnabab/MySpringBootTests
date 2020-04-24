@@ -10,14 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.krish.quantum.monitoring.QuantumData;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class MetricsHandler implements HandlerInterceptor {
 		
+		//@Autowired
+		public QuantumData quantumData;
+		
 		@Autowired
-		QuantumData quantumData;
+		QuantumClientService quantumClient;
 	  	
 	   @Override
 	   public boolean preHandle
@@ -29,7 +36,17 @@ public class MetricsHandler implements HandlerInterceptor {
 			log.info("Request URL::" + request.getRequestURL().toString()
 					+ ":: Start Time=" + System.currentTimeMillis());
 			request.setAttribute("receivedTimestamp", receivedTimestamp);
-			quantumData.setReceivedTimestamp(receivedTimestamp);
+			if(quantumData != null) {
+				log.info("quantumData"+quantumData.toString());
+				this.quantumData.setReceivedTimestamp(receivedTimestamp);
+			}
+			else {
+				log.info("This is badly null");
+			}
+			
+			if(quantumData != null)
+			log.info("quantum client "+ quantumClient);
+			
 	      return true;
 	   }
 	   @Override
@@ -44,7 +61,8 @@ public class MetricsHandler implements HandlerInterceptor {
 			request.setAttribute("finishedCreatedTimestamp", finishedCreatedTimestamp);
 			quantumData.setFinishedCreatedTimestamp(finishedCreatedTimestamp);
 			request.setAttribute("processingTime", finishedCreatedTimestamp-receivedTimestamp);
-			
+			log.info("in Controller"+quantumData.toString());
+			quantumClient.postAddEquipementMetricsToQuantum(quantumData);
 	   }
 	   @Override
 	   public void afterCompletion
