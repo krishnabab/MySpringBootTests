@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 //@AllArgsConstructor
 public class MetricsHandler implements HandlerInterceptor {
-	
+	//Using this static variable for using below, is this fine ???
 	static long receivedTimestamp; 
 	static long finishedCreatedTimestamp;
 	
