@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import com.krish.quantum.monitoring.QuantumData;
 
 
-//import com.charter.techmobile.common.feign.FeignGenericConfig;
-//import com.charter.techmobile.techbuffer.exception.CustomErrorDecoder;
-
 @FeignClient(value = "tm-techbuffer-quantumclient", url = "${quantum.kafa.url}")
 //,configuration = { FeignGenericConfig.class })
 @Component
