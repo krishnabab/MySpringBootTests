@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-import com.krish.quantum.monitoring.QuantumData;
+import com.krish.quantum.monitoring.QuantumData;	
 
 
-@FeignClient(value = "tm-techbuffer-quantumclient", url = "${quantum.kafa.url}")
-//,configuration = { FeignGenericConfig.class })
+@FeignClient(value = "tm-techbuffer-quantumclient", url = "${quantum.kafa.url}" , 
+configuration = { FeignClientQuantumTagging.class })
 @Component
 public interface QuantumClient {
 	

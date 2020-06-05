@@ -4,8 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -14,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.krish.quantum.monitoring.Message;
 import com.krish.quantum.monitoring.QuantumData;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
@@ -24,7 +21,7 @@ public class MetricsHandler implements HandlerInterceptor {
 	
 	@Autowired
 	QuantumClient quantumClient;
-
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -60,16 +57,16 @@ public class MetricsHandler implements HandlerInterceptor {
 		msg.setName("qube1");
 		msg.setTimestamp((int)(finishedCreatedTimestamp));
 		quantumData.setMessage(msg);
-		log.info("JSON .......>>>>"+quantumData.toString());
+		log.info("JSON ......"+quantumData.toString());
 		//To capture response code from feign client i used below is this fine ??? 
 		ResponseEntity resp = quantumClient.postAddEquipementMetricsToQuantum("collector.pi-charter.net", "okhttp/4.4.1", "isMobile:true","isAjax:true", quantumData);
-		log.info("RESP Code:>>>>"+resp.getStatusCodeValue());
+		log.info("RESP Code:"+resp.getStatusCodeValue());
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception exception) throws Exception {
 
-		log.info(">>>>Request and Response is completed");
+		//log.info(">>>>Request and Response is completed");
 	}
 }
