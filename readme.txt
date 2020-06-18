@@ -1,3 +1,6 @@
+* To externalize the logback xml through config property 
+	logging.config: file:C:/Users/ffff/Desktop/logback-spring.xml
+
 * To get dispatcher servlet request data with in other places of springboot code
 	ResettableStreamHttpServletRequest servletReq = (ResettableStreamHttpServletRequest)(((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest());
 
