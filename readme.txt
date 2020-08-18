@@ -1,4 +1,8 @@
-* To externalize the logback xml through config property 
+* Hibernate loglevel and l2 cache diable 
+logging.level.org.hibernate.internal.util.EntityPrinter: info
+hibernate.cache.use_second_level_cache: false  
+
+* To externalize the logback xml through config property in yml or properties file
 	logging.config: file:C:/Users/ffff/Desktop/logback-spring.xml
 
 * To get dispatcher servlet request data with in other places of springboot code
