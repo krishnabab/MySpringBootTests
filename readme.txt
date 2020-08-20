@@ -1,3 +1,9 @@
+* spring data jpa - repository can have custom query like below to handle ignore null values from params
+	@Query(" SELECT p FROM Photo p WHERE (:addressId is null or p.addressId = :addressId) and "
+			+ "(:jobNumber is null or p.jobNumber = :jobNumber) and (:workOrder is null or p.workOrder = :workOrder) and "
+			+ "(:accountNumber is null or p.accountNumber = :accountNumber)")
+	List<Photo> findAllByAnyField(String addressId, String jobNumber, String workOrder, String accountNumber);
+	
 * Hibernate loglevel and l2 cache diable 
 logging.level.org.hibernate.internal.util.EntityPrinter: info
 hibernate.cache.use_second_level_cache: false  
