@@ -28,7 +28,7 @@ hibernate.cache.use_second_level_cache: false
 	    value="quantum.metrics.externalcall.monitoring.enabled", 
 	    havingValue = "true",
 	    matchIfMissing = false )
-	@ComponentScan("com.xyz.techmobile.common.abc.*")
+	@ComponentScan("com.xyz.acc.common.abc.*")
 * After spring appln started to do for example enrich after RestTemplate bean created
 	@PostConstruct
 	public void enrichRestCleint() {

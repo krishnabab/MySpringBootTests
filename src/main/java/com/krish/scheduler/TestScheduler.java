@@ -21,7 +21,7 @@ public class TestScheduler {
 		log.info("CRON TASK 1",System.currentTimeMillis() / 1000);
 	}
 	
-	@Scheduled(cron="0 0 3 * * *") // runs every day at 6pm once
+	@Scheduled(cron="0 0 3 * * *") // runs every day at 3AM once daily
 	public void scheduleCronTask2() {
 		log.info("CRON TASK 2",System.currentTimeMillis() / 1000);
 	}
