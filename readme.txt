@@ -1,3 +1,6 @@
+* Spring JPA Keywords 
+https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repository-query-keywords
+
 * Spring Data JPA DELETE with Query 
 @Modifying
 	@Query("delete from TableB o where o.state in :status and o.createdDate < :date")
