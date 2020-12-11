@@ -1,4 +1,4 @@
-* Spring JPA Keywords 
+* Spring JPA Keywords for mongoDB
 https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repository-query-keywords
 
 * Spring Data JPA DELETE with Query 
