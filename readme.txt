@@ -1,3 +1,22 @@
+* Liquibase maven plugin to generate SQL 
+<plugin>
+	<groupId>org.liquibase</groupId>
+	<artifactId>liquibase-maven-plugin</artifactId>
+	<configuration>
+		<changeLogFile>
+		  src/main/resources/db/changelog/db.changelog-master.yaml
+		</changeLogFile>
+		<driver>org.h2.Driver</driver>
+		<url>jdbc:h2:mem:profile;DB_CLOSE_DELAY=-1</url>
+		<username>TM_PROFILE</username>
+		<password></password>
+		</configuration>
+		<version>3.6.2</version>
+</plugin>
+* mvn org.liquibase:liquibase-maven-plugin:updateSQL
+* mvn org.liquibase:liquibase-maven-plugin:status
+
+		
 * Spring JPA Keywords for mongoDB
 https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repository-query-keywords
 
