@@ -220,6 +220,51 @@ class QuantumServiceImplTest {
 
 ##### CRONS ####	
 https://www.freeformatter.com/cron-expression-generator-quartz.html
-0 0 0 ? * * * >>> At 00:00:00am every day
-0 0/01 13-16 * * * >> this runs between 1 pm to 4 pm ..every one min...	
-					
+
+ ┌───────────── second (0-59)
+ │ ┌───────────── minute (0 - 59)
+ │ │ ┌───────────── hour (0 - 23)
+ │ │ │ ┌───────────── day of the month (1 - 31)
+ │ │ │ │ ┌───────────── month (1 - 12) (or JAN-DEC)
+ │ │ │ │ │ ┌───────────── day of the week (0 - 7)
+ │ │ │ │ │ │          (or MON-SUN -- 0 or 7 is Sunday)
+ │ │ │ │ │ │
+ * * * * * *
+ 
+ 
+differences between * and ?
+To explain difference between ? and * in the expressions, first of all take a look at this table:
+
+Field Name      Mandatory   Allowed Values      Allowed Special Characters
+Seconds         YES         0-59                , - * /
+Minutes         YES         0-59                , - * /
+Hours           YES         0-23                , - * /
+Day of month    YES         1-31                , - * ? / L W   //allowed '?'
+Month           YES         1-12 or JAN-DEC     , - * /
+Day of week     YES         1-7 or SUN-SAT      , - * ? / L #   //allowed '?'
+Year            NO          empty, 1970-2099    , - * /
+As you can see ? is only allowed in Day of month and Day of week is mandatory in one of both fields and will tell Quartz this value has not been defined, thus, use the other field (if you put ? into Day of month, the value used will be Day of week).
+
+some of the example expressions to understand this 
+
+Expression		Meaning				
+second, minute, hour, day, month, weekday						
+0 0 12 * * ? 		Fire at 12pm (noon) every day     				
+0 15 10 ? * *     		 Fire at 10:15am every day   				
+ 0 15 10 * * ? 		Fire at 10:15am every day 				
+0 15 10 * * ? * 		Fire at 10:15am every day       				
+0 15 10 * * ? 2005 		Fire at 10:15am every day during the year 2005                 				
+0 * 14 * * ?     		Fire every minute starting at 2pm and ending at 2:59pm, every day                          				
+0 0/5 14 * * ? 		Fire every 5 minutes starting at 2pm and ending at 2:55pm, every day                                               				
+0 0/5 14,18 * * ?		Fire every 5 minutes starting at 2pm and ending at 2:55pm, AND fire every 5 minutes starting at 6pm and ending at 6:55pm, every day				
+0 0 0 ? * * * 		At 00:00:00am every day				
+0 0/01 13-16 * * *		 this runs between 1 pm to 4 pm ..every one min... 				
+ 0 0 * * * *		the top of every hour of every day.				
+*/10 * * * * *		every ten seconds				
+ 0 0 8-10 * * *		8, 9 and 10 o'clock of every day				
+ 0 0 6,19 * * *		 6:00 AM and 7:00 PM every day				
+0 0/30 8-10 * * *		8:00, 8:30, 9:00, 9:30, 10:00 and 10:30 every day				
+ 0 0 9-17 * * MON-FRI		on the hour nine-to-five weekdays				
+0 0 0 25 12 ?		every Christmas Day at midnight
+0 0/10 * * * *			Run every 10 mins
+0 0 0/3 * * *                   Run every 3 hours
