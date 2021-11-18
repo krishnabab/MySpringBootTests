@@ -219,6 +219,7 @@ class QuantumServiceImplTest {
 }		
 
 ##### CRONS ####	
+ https://reflectoring.io/spring-scheduler/
 https://www.freeformatter.com/cron-expression-generator-quartz.html
 
  ┌───────────── second (0-59)
