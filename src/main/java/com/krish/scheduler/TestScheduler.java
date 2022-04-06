@@ -1,13 +1,13 @@
 package com.krish.scheduler;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Component
@@ -36,6 +36,7 @@ public class TestScheduler {
     }
 
 //	    These are valid formats for cron expressions:
+// The pattern is:
 // second, minute, hour, day, month, weekday
 // https://www.freeformatter.com/cron-expression-generator-quartz.html
 // 0 0 0 ? * * * >>> At 00:00:00am every day
@@ -48,8 +49,4 @@ public class TestScheduler {
 // 0 0/30 8-10 * * * = 8:00, 8:30, 9:00, 9:30, 10:00 and 10:30 every day.
 // 0 0 9-17 * * MON-FRI = on the hour nine-to-five weekdays
 // 0 0 0 25 12 ? = every Christmas Day at midnight
-// The pattern is:
-
-//second, minute, hour, day, month, weekday
-
 }
