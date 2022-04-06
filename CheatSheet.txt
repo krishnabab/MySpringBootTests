@@ -1,0 +1,78 @@
+To run in local 
+-Dspring.profiles.active=local
+-Dtechmobile.security.authenticatedPathAntPatterns="/r*/**"
+--debug
+-Dlogging.level.org.springframework=debug
+-Dspring.profiles.active=dev01
+
+http://localhost:8111/actuator/info
+http://localhost:8112/manage/mappings 	
+http://localhost:8112/manage/beans
+http://localhost:8113/actuator/beans
+
+InteliJ 
+select pom and add as maven project 
+then 
+in maven spring-boot:run
+springboot vm options  : -Dspring.profiles.active=local -Dtechmobile.security.authenticatedPathAntPatterns="/r*/**"
+
+docker build -t messaging-service:latest .
+docker run -e "SPRING_PROFILES_ACTIVE=local" -d -p 8121:8121 messaging-service:latest 
+Note : Make sure u dont use localhost anywhere in code. it looks for localhost on docker.
+
+add local profile
+
+ALTER SESSION SET current_schema=TECHMOBILE_TECHVIEW;
+ALTER SESSION SET current_schema=SA_OAUTH;
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+datasource:
+    url: jdbc:h2:mem:messages;DB_CLOSE_DELAY=-1
+    driver:
+      class: org.h2.Driver
+    username: sa
+    password: ''   
+
+    url:  jdbc:h2:tcp://localhost/~/test
+    driver:
+      class: org.h2.Driver
+    username: sa
+    password: ''	
+
+mvn clean install -DskipTests
+
+-Dspring.profiles.active=local 
+-Dtechmobile.security.authenticatedPathAntPatterns="/r*/**" 
+-Dhttp.proxyHost=24.33.39.60
+-Dhttp.proxyPort=3128 
+-Dhttp.nonProxyHosts="localhost|127.0.0.1|10.*.*.*|*.foo.com‌​|etc" -Dhttp.proxyUser=P2949259 -Dhttp.proxyPassword=Nov$2020
+
+Downloads>keytool -import -trustcacerts -keystore "C:\Users\P2949259\Documents\MyCharterData\SWS\jdk8\jre\lib\security\cacerts" -storepass change
+it -alias repository -file artifactorycorpchartercomcom.crt
+
+mvn org.liquibase:liquibase-maven-plugin:updateSQL
+
+
+select 'drop '||object_type||' '|| object_name || ';' from user_objects where object_type in ('TABLE', 'INDEX');
+Output would be like this. Copy and run all drop command
+
+drop INDEX IDX_USERNAME_UPDATEDATE;
+drop INDEX IDX_SUPPORT_TASK_ID;
+drop INDEX IDX_RECIPIENT_FCID;
+drop INDEX PK_FIREBASE_CONFIG;
+drop TABLE FIREBASE_CONFIG;
+drop INDEX PK_MESSAGE;
+drop TABLE MESSAGE;
+drop INDEX PK_PREDEFINED_MESSAGE;
+drop TABLE PREDEFINED_MESSAGE;
+drop TABLE DATABASECHANGELOG;
+drop INDEX PK_DATABASECHANGELOGLOCK;
+drop TABLE DATABASECHANGELOGLOCK;
+
+to kill all ms
+ps aux | grep java | grep "tm-" | awk '{print $2}' | xargs kill -9
