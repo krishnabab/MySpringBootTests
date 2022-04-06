@@ -16,6 +16,30 @@
 * mvn org.liquibase:liquibase-maven-plugin:updateSQL
 * mvn org.liquibase:liquibase-maven-plugin:status
 
+* Rabbit mq Commands to add admin user
+  C:\Users\P2949259>cd C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.7\sbin
+
+  C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.7\sbin>rabbitmqctl.bat add_user krishna krishna
+  Adding user "krishna" ...
+
+  C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.7\sbin>rabbitmqctl.bat set_user_tags krishna administrator
+  Setting tags for user "krishna" to [administrator] ...
+
+  C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.7\sbin>rabbitmqctl.bat set_permissions -p / krishna ".*" ".*" ".*"
+  Setting permissions for user "krishna" in vhost "/" ...
+
+  C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.7\sbin>curl -i -u krishna:krishna http://localhost:15672/api/whoami
+  HTTP/1.1 200 OK
+  cache-control: no-cache
+  content-length: 41
+  content-security-policy: script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'
+  content-type: application/json
+  date: Tue, 15 Sep 2020 21:26:11 GMT
+  server: Cowboy
+  vary: accept, accept-encoding, origin
+
+  {"name":"krishna","tags":"administrator"}
+
 		
 * Spring JPA Keywords for mongoDB
 https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repository-query-keywords
